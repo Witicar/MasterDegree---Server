@@ -1,0 +1,9 @@
+Configuration\ServerConfig.class
+Services\PatientService.class
+Services\PrototypePatientService.class
+Database\Database.class
+Database\PrototypeDatabase.class
+Models\Patients.class
+Resources\PatientResource.class
+Models\Adress.class
+Models\Visit.class
