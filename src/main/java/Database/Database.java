@@ -11,7 +11,7 @@ public class Database {
 
     protected void startDatabase() {
         entityManagerFactory = Persistence.
-                createEntityManagerFactory("hospital_oracle");
+                createEntityManagerFactory("hospital_postgres");
         entityManager = entityManagerFactory.createEntityManager();
     }
 
