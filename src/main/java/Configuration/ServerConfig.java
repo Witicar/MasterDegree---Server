@@ -2,6 +2,6 @@ package Configuration;
 
 import javax.ws.rs.ApplicationPath;
 
-@ApplicationPath("http://192.168.1.113:9999")
+@ApplicationPath("https://protected-waters-54556.herokuapp.com")
 public class ServerConfig {
 }
