@@ -1,18 +1,18 @@
 package Resources;
 
+import Models.Address;
 import Models.Patient;
 import Services.RegisterService;
-import jdk.nashorn.internal.parser.JSONParser;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("/patient/register")
+@Path("")
 public class RegisterResource {
 
     RegisterService registerService = new RegisterService();
 
-    @Path("/login")
+    @Path("patient/register/login")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Boolean isRegisterLoginMailExist(@QueryParam("login") String login, @QueryParam("mail") String mail)
@@ -20,11 +20,12 @@ public class RegisterResource {
         return registerService.isRegisterLoginMailExist(login, mail);
     }
 
+    @Path("patient/register")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Patient postRegisterData(Patient patient)
+    public Patient postPatientData(Patient patient)
     {
-        return registerService.postRegisterData(patient);
+        return registerService.postPatientData(patient);
     }
 }

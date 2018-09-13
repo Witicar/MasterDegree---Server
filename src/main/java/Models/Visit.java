@@ -1,42 +1,46 @@
 package Models;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "\"PATIENT VISITES\"")
 public class Visit {
 
-    @OneToMany(mappedBy = "medicalHistory_visit")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "medicalHistory_visit", cascade = CascadeType.ALL)
     private List<MedicalHistory> visitMedicialHistories = new ArrayList<MedicalHistory>();
 
-    @OneToMany(mappedBy = "medicine_visit")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "medicine_visit", cascade = CascadeType.ALL)
     private List<Medicine> visitMedicines = new ArrayList<Medicine>();
 
-    @OneToMany(mappedBy = "medicalTest_visit")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "medicalTest_visit", cascade = CascadeType.ALL)
     private List<MedicalTest> visitMedicalTests = new ArrayList<MedicalTest>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "\"FK PatientVisit Patient\"")
     private Patient visit_patient;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "\"FK PatienVisit Doctor\"")
     private Doctor visit_doctor;
 
     @Id
     @GeneratedValue
-    @Column(name = "\"Patient Visit ID\"")
+    @Column(name = "\"Patient Visit ID\"", nullable = false, unique = true)
     private long patientVisitID;
 
-    @Column(name = "\"Health Facility\"")
-    private String healthFacility;
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "\"Visit Day\"")
-    private Date visitDay;
+    @Column(name = "\"Visit Time\"", nullable = false)
+    private int visitTime;
 
     public Visit() {
     }
@@ -49,19 +53,54 @@ public class Visit {
         this.patientVisitID = patientVisitID;
     }
 
-    public String getHealthFacility() {
-        return healthFacility;
+    public int getVisitTime() {
+        return visitTime;
     }
 
-    public void setHealthFacility(String healthFacility) {
-        this.healthFacility = healthFacility;
+    public void setVisitTime(int visitDay) {
+        this.visitTime = visitDay;
     }
 
-    public Date getVisitDay() {
-        return visitDay;
+    /////////////////////////////////////////////////////////////////
+
+
+    public List<MedicalHistory> getVisitMedicialHistories() {
+        return visitMedicialHistories;
     }
 
-    public void setVisitDay(Date visitDay) {
-        this.visitDay = visitDay;
+    public void setVisitMedicialHistories(List<MedicalHistory> visitMedicialHistories) {
+        this.visitMedicialHistories = visitMedicialHistories;
+    }
+
+    public List<Medicine> getVisitMedicines() {
+        return visitMedicines;
+    }
+
+    public void setVisitMedicines(List<Medicine> visitMedicines) {
+        this.visitMedicines = visitMedicines;
+    }
+
+    public List<MedicalTest> getVisitMedicalTests() {
+        return visitMedicalTests;
+    }
+
+    public void setVisitMedicalTests(List<MedicalTest> visitMedicalTests) {
+        this.visitMedicalTests = visitMedicalTests;
+    }
+
+    public Patient getVisit_patient() {
+        return visit_patient;
+    }
+
+    public void setVisit_patient(Patient visit_patient) {
+        this.visit_patient = visit_patient;
+    }
+
+    public Doctor getVisit_doctor() {
+        return visit_doctor;
+    }
+
+    public void setVisit_doctor(Doctor visit_doctor) {
+        this.visit_doctor = visit_doctor;
     }
 }

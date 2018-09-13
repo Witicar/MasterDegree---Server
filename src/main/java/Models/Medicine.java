@@ -1,21 +1,24 @@
 package Models;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "\"MEDICINES\"")
 public class Medicine {
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "\"FK Medicine PatientVisit\"")
     private Visit medicine_visit;
 
     @Id
     @GeneratedValue
-    @Column(name = "\"Medicine ID\"")
+    @Column(name = "\"Medicine ID\"", nullable = false, unique = true)
     private long medicinesID;
 
-    @Column(name = "Code")
+    @Column(name = "Code", nullable = false, unique = true)
     private String code;
 
     @Column(name = "Name")
@@ -68,5 +71,16 @@ public class Medicine {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+
+    //////////////////////////////////////////////////////////
+
+
+    public Visit getMedicine_visit() {
+        return medicine_visit;
+    }
+
+    public void setMedicine_visit(Visit medicine_visit) {
+        this.medicine_visit = medicine_visit;
     }
 }

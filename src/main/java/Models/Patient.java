@@ -1,7 +1,9 @@
 package Models;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
-import javax.ws.rs.Consumes;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,16 +12,18 @@ import java.util.List;
 @Table(name = "\"LIST OF PATIENTS\"")
 public class Patient {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "\"FK Patient Adress\"")
-    private Adress adress_patient;
 
-    @OneToMany (mappedBy = "visit_patient")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonBackReference
+    @JoinColumn(name = "\"FK Patient Address\"")
+    private Address address_patient;
+
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "visit_patient", cascade = CascadeType.ALL)
     private List<Visit> patientVisites = new ArrayList<Visit>();
 
     @Id
     @GeneratedValue
-    @Column(name = "\"Patient ID\"")
+    @Column(name = "\"Patient ID\"", nullable = false, unique = true)
     private long patientID;
 
     @Column(name = "Surname")
@@ -32,7 +36,7 @@ public class Patient {
     private String sex;
 
     @Column(name = "Pesel")
-    private int pesel;
+    private long pesel;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "\"Birth Date\"")
@@ -42,12 +46,12 @@ public class Patient {
     private String placeOfBirth;
 
     @Column(name = "\"Phone Number\"")
-    private int phoneNumber;
+    private long phoneNumber;
 
-    @Column(name = "Login")
+    @Column(name = "Login", nullable = false, unique = true)
     private String login;
 
-    @Column(name = "Password")
+    @Column(name = "Password", nullable = false, unique = true)
     private String password;
 
     @Column(name = "Email")
@@ -97,11 +101,11 @@ public class Patient {
         this.sex = sex;
     }
 
-    public int getPesel() {
+    public long getPesel() {
         return pesel;
     }
 
-    public void setPesel(int pesel) {
+    public void setPesel(long pesel) {
         this.pesel = pesel;
     }
 
@@ -121,11 +125,11 @@ public class Patient {
         this.placeOfBirth = placeOfBirth;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -159,5 +163,24 @@ public class Patient {
 
     public void setPriority(String priority) {
         this.priority = priority;
+    }
+
+    ///////////////////////////////////////////////////////////////////
+
+
+    public Address getAddress_patient() {
+        return address_patient;
+    }
+
+    public void setAddress_patient(Address address_patient) {
+        this.address_patient = address_patient;
+    }
+
+    public List<Visit> getPatientVisites() {
+        return patientVisites;
+    }
+
+    public void setPatientVisites(List<Visit> patientVisites) {
+        this.patientVisites = patientVisites;
     }
 }

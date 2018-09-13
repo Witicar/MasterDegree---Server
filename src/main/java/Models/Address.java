@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "\"ADRESSES\"")
-public class Adress {
+@Table(name = "\"ADDRESSES\"")
+public class Address {
 
-    @OneToMany(mappedBy = "adress_patient")
-    private List<Patient> patiensAdress = new ArrayList<Patient>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "address_patient", cascade = CascadeType.ALL)
+    private List<Patient> patientAddresses = new ArrayList<Patient>();
 
     @Id
     @GeneratedValue
-    @Column(name = "\"Adress ID\"")
-    private long adressID;
+    @Column(name = "\"Address ID\"", nullable = false, unique = true)
+    private long addressID;
 
     @Column(name = "Country")
     private String country;
@@ -25,21 +25,21 @@ public class Adress {
     @Column(name = "City")
     private String city;
 
-    @Column(name = "Postcode")
-    private String postcode;
+    @Column(name = "Postalcode")
+    private String postalcode;
 
     @Column(name = "\"House Number\"")
     private String houseNumber;
 
-    public Adress() {
+    public Address() {
     }
 
-    public long getAdressID() {
-        return adressID;
+    public long getAddressID() {
+        return addressID;
     }
 
-    public void setAdressID(long adressID) {
-        this.adressID = adressID;
+    public void setAddressID(long addressID) {
+        this.addressID = addressID;
     }
 
     public String getCountry() {
@@ -66,12 +66,12 @@ public class Adress {
         this.city = city;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getPostalcode() {
+        return postalcode;
     }
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
+    public void setPostalcode(String postcode) {
+        this.postalcode = postcode;
     }
 
     public String getHouseNumber() {
@@ -80,5 +80,16 @@ public class Adress {
 
     public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
+    }
+
+    /////////////////////////////////////////////////
+
+
+    public List<Patient> getPatientAddresses() {
+        return patientAddresses;
+    }
+
+    public void setPatientAddresses(List<Patient> patientAddresses) {
+        this.patientAddresses = patientAddresses;
     }
 }

@@ -1,5 +1,7 @@
 package Models;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -7,13 +9,14 @@ import java.util.Date;
 @Table(name = "\"MEDICAL TESTS\"")
 public class MedicalTest {
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "\"FK MedicalTest PatientVisit\"")
     private Visit medicalTest_visit;
 
     @Id
     @GeneratedValue
-    @Column(name = "\"Medical Test ID\"")
+    @Column(name = "\"Medical Test ID\"", nullable = false, unique = true)
     private long medicalTestID;
 
     @Column(name = "Name")
@@ -59,5 +62,16 @@ public class MedicalTest {
 
     public void setResults(String results) {
         this.results = results;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+
+    public Visit getMedicalTest_visit() {
+        return medicalTest_visit;
+    }
+
+    public void setMedicalTest_visit(Visit medicalTest_visit) {
+        this.medicalTest_visit = medicalTest_visit;
     }
 }

@@ -8,16 +8,16 @@ import java.util.List;
 @Table(name = "\"LIST OF DOCTORS\"")
 public class Doctor {
 
-    @OneToMany(mappedBy = "visit_doctor")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "visit_doctor", cascade = CascadeType.ALL)
     private List<Visit> doctorVisits = new ArrayList<Visit>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "\"FK Doctor HoursOfAdmission\"")
     private HoursOfAdmission doctor_hoursOfAdmission;
 
     @Id
     @GeneratedValue
-    @Column(name = "\"Doctor ID\"")
+    @Column(name = "\"Doctor ID\"", nullable = false, unique = true)
     private long doctorID;
 
     @Column(name = "Surname")
@@ -33,13 +33,7 @@ public class Doctor {
     private int practiceNumber;
 
     @Column(name = "\"Phone Number\"")
-    private int phoneNumber;
-
-    @Column(name = "Login")
-    private String login;
-
-    @Column(name = "Password")
-    private String password;
+    private long phoneNumber;
 
     public Doctor() {
     }
@@ -84,27 +78,30 @@ public class Doctor {
         this.practiceNumber = practiceNumber;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getLogin() {
-        return login;
+    ////////////////////////////////////////////////////////////////////
+
+
+    public List<Visit> getDoctorVisits() {
+        return doctorVisits;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setDoctorVisits(List<Visit> doctorVisits) {
+        this.doctorVisits = doctorVisits;
     }
 
-    public String getPassword() {
-        return password;
+    public HoursOfAdmission getDoctor_hoursOfAdmission() {
+        return doctor_hoursOfAdmission;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDoctor_hoursOfAdmission(HoursOfAdmission doctor_hoursOfAdmission) {
+        this.doctor_hoursOfAdmission = doctor_hoursOfAdmission;
     }
 }

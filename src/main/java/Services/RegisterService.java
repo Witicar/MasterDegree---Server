@@ -1,10 +1,12 @@
 package Services;
 
+import Models.Address;
 import Models.Patient;
 import Database.Database;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.ws.rs.QueryParam;
 
 public class RegisterService extends Database{
 
@@ -20,9 +22,15 @@ public class RegisterService extends Database{
         query_mail = entityManager.createQuery("select patient.email from Patient patient where patient.email =: mail");
         query_mail.setParameter("mail", mail);
         try {
-            query_login.getSingleResult().toString().equals(login);
+            if(query_login.getSingleResult().toString().equals(login))
+                isExist=Boolean.TRUE;
         } catch (NoResultException e) {
-            isExist=Boolean.FALSE;
+            try {
+                if (query_mail.getSingleResult().toString().equals(mail))
+                    isExist = Boolean.TRUE;
+            } catch (NoResultException f) {
+                isExist = Boolean.FALSE;
+            }
         }
         finally {
             entityManager.getTransaction().commit();
@@ -31,7 +39,7 @@ public class RegisterService extends Database{
         }
     }
 
-    public Patient postRegisterData(Patient patient)
+    public Patient postPatientData(Patient patient)
     {
         startDatabase();
         entityManager.getTransaction().begin();
