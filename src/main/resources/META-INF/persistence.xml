@@ -30,7 +30,7 @@
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://postgres://ctepcpaznoqovc:6e49874899b6cf392286889987269932cfd26c88a1305340372a9449a3190658@ec2-174-129-35-61.compute-1.amazonaws.com:5432/dehv4q46mp414s" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/hospital" />
             <property name="javax.persistence.jdbc.user" value="postgres" /> <!-- DB User -->
             <property name="javax.persistence.jdbc.password" value="hospital" /> <!-- DB Password -->
 

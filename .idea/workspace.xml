@@ -7,10 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30ecfcbb-ef9d-43fe-8b02-7fba72dc5f75" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
-      <change beforePath="$PROJECT_DIR$/target/Server-1.0/WEB-INF/classes/Configuration/ServerConfig.class" afterPath="$PROJECT_DIR$/target/Server-1.0/WEB-INF/classes/Configuration/ServerConfig.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Configuration/ServerConfig.class" afterPath="$PROJECT_DIR$/target/classes/Configuration/ServerConfig.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -98,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="128">
-              <caret line="32" column="233" lean-forward="false" selection-start-line="32" selection-start-column="233" selection-end-line="32" selection-end-column="233" />
+              <caret line="32" column="81" lean-forward="true" selection-start-line="32" selection-start-column="81" selection-end-line="32" selection-end-column="99" />
               <folding />
             </state>
           </provider>
@@ -874,12 +871,12 @@
       <workItem from="1536562822310" duration="23424000" />
       <workItem from="1536650101888" duration="4542000" />
       <workItem from="1536732948703" duration="16109000" />
-      <workItem from="1536820580978" duration="10454000" />
+      <workItem from="1536820580978" duration="11061000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="667291000" />
+    <option name="totallyTimeSpent" value="667898000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1357,7 +1354,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
-          <caret line="32" column="233" lean-forward="false" selection-start-line="32" selection-start-column="233" selection-end-line="32" selection-end-column="233" />
+          <caret line="32" column="81" lean-forward="true" selection-start-line="32" selection-start-column="81" selection-end-line="32" selection-end-column="99" />
           <folding />
         </state>
       </provider>
