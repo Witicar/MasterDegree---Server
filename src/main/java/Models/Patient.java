@@ -1,7 +1,6 @@
 package Models;
 
 import org.codehaus.jackson.annotate.JsonBackReference;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,6 +16,10 @@ public class Patient {
     @JsonBackReference
     @JoinColumn(name = "\"FK Patient Address\"")
     private Address address_patient;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "\"FK Medical Test Registration\"")
+    private MedicalTestRegistration medicalTestRegistration_patient;
 
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "visit_patient", cascade = CascadeType.ALL)
     private List<Visit> patientVisites = new ArrayList<Visit>();
@@ -167,6 +170,13 @@ public class Patient {
 
     ///////////////////////////////////////////////////////////////////
 
+    public MedicalTestRegistration getMedicalTestRegistration_patient() {
+        return medicalTestRegistration_patient;
+    }
+
+    public void setMedicalTestRegistration_patient(MedicalTestRegistration medicalTestRegistration_patient) {
+        this.medicalTestRegistration_patient = medicalTestRegistration_patient;
+    }
 
     public Address getAddress_patient() {
         return address_patient;

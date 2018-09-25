@@ -3,27 +3,6 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
              http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-    <persistence-unit name="hospital_oracle" transaction-type="RESOURCE_LOCAL">
-
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-        <properties>
-            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-            <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
-            <property name="hibernate.connection.username" value="hospital"/>
-            <property name="hibernate.connection.password" value="hospital"/>
-
-            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
-
-            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
-
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.use_sql_comments" value="true" />
-            <property name="hibernate.format_sql" value="true" />
-        </properties>
-
-    </persistence-unit>
-
     <persistence-unit name="hospital_postgres" transaction-type="RESOURCE_LOCAL">
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -36,7 +15,7 @@
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
 
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
 
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.use_sql_comments" value="true" />

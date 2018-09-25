@@ -18,7 +18,6 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="Entities" />
-          <factory-entry name="hospital_oracle" value="0945d2d5-cf7f-4f00-a195-eb30903944a6" />
           <factory-entry name="hospital_postgres" value="6d0d5861-4203-4e5b-bd4e-787a3181977c" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
